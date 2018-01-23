@@ -1,15 +1,15 @@
 // Assign the required packages to variables
 var express     = require("express"), 
-    app         = express(),
     bodyParser  = require("body-parser"),
-    mongoose    = require("mongoose");
+    mongoose    = require("mongoose"),
+    app         = express()
+;
 
 // App config
 mongoose.connect("mongodb://localhost/mockBlog");
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
-
 
 // mongoose/model config
 var blogSchema = new mongoose.Schema({
@@ -21,11 +21,11 @@ var blogSchema = new mongoose.Schema({
 
 var Blog = mongoose.model("Blog", blogSchema);
 
-Blog.create({
-   title: "through we go",
-   image: "https://images.unsplash.com/photo-1499428665502-503f6c608263?auto=format&fit=crop&w=750&q=80",
-   body: "Photo by David Werbrouck on Unsplash",
-});
+// Blog.create({
+//   title: "through we go",
+//   image: "https://images.unsplash.com/photo-1499428665502-503f6c608263?auto=format&fit=crop&w=750&q=80",
+//   body: "Photo by David Werbrouck on Unsplash",
+// });
 
 // ROUTES
 app.get("/", function(req, res){
@@ -41,6 +41,23 @@ app.get("/blogs", function(req, res){
            res.render("index", {blogs:blogs});
        }
     });
+});
+
+// New Route
+app.get("/blogs/new", function(req, res){
+   res.render("new");
+});
+
+// Create Route
+app.post("/blogs", function(req, res){
+   // Create blog
+   Blog.create(req.body.blog, function(err, newBlog){
+      if (err){
+          console.log(err);
+      } else {
+          res.redirect("/blogs");   
+      } 
+   });
 });
 
 // BLOG POST
