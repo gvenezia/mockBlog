@@ -1,0 +1,24 @@
+<% include partials/header %>
+
+<!--Same kind of form as in new.ejs-->
+<div class="ui text segment container">
+    <div class="ui center huge header">
+        Edit Blog Post — "<%= blog.title %>"
+    </div>
+    <div class="ui form">
+        <form action="/blogs" method="POST">
+            <div class="field">
+                <input type="text" value="<%= blog.title %>" name="blog[title]"> 
+            </div>
+            <div class="field">
+                <input type="text" value="<%= blog.image %>" name="blog[image]"> 
+            </div>
+            <div class="field">
+                <textarea name="blog[body]" rows="5"><%= blog.body %></textarea> 
+            </div>  
+            <input class="ui button" type="submit"></button>
+        </form>    
+    </div>
+
+
+<% include partials/footer %>

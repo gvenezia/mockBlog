@@ -21,11 +21,11 @@ var blogSchema = new mongoose.Schema({
 
 var Blog = mongoose.model("Blog", blogSchema);
 
-Blog.create({
-  title: "Blackout",
-  image: "https://images.unsplash.com/photo-1499428665502-503f6c608263?auto=format&fit=crop&w=750&q=80",
-  body: "Photo by David Werbrouck on Unsplash",
-});
+// Blog.create({
+//   title: "Blackout",
+//   image: "https://images.unsplash.com/photo-1499428665502-503f6c608263?auto=format&fit=crop&w=750&q=80",
+//   body: "Photo by David Werbrouck on Unsplash",
+// });
 
 // ROUTES
 app.get("/", function(req, res){
@@ -71,6 +71,17 @@ app.get("/blogs/:id", function(req, res){
        }
     });
 
+});
+
+// Edit Route
+app.get("/blogs/:id/edit", function(req, res){
+     Blog.findById(req.params.id, function(err, foundBlog){
+       if (err){
+           console.log(err);
+       } else {
+              res.render("edit", {blog:foundBlog});           
+       }
+    });
 });
 
 // BLOG POST
