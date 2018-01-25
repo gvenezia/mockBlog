@@ -5,3 +5,7 @@ i.book {
 h1 {
     color: purple;
 }
+
+.post-date {
+    color: grey;
+}

@@ -3,11 +3,15 @@
 <h1>All the blogs 2</h1>
 
 <% blogs.forEach(function(blog){ %>
-    <div>
-        <p> <%= blog.title %> </p>
-        <img src="<%= blog.image %>"> </p>
-        <span> <%= blog.created %> </span>
-    </div>
+    <!-- Link that sends you to show with the right info -->
+    <a href="/blogs/<%= blog._id %>">
+        <div>
+            <p> <%= blog.title %> </p>
+            <img src="<%= blog.image %>"> </p>
+            <p><%= blog.body.substring(0, 100)%>...</p>
+            <span> <%= blog.created %> </span>
+        </div>
+    </a>
 <% }); %>
 
 <% include partials/footer %>
