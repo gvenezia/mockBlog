@@ -1,5 +1,6 @@
 <% include partials/header %>
 
+
     <div class="ui main text container segment">
         <div class="ui center huge header">
             <%=blog.title%>
@@ -11,11 +12,21 @@
         <div class="ui item">
             <p class="post-date">&emsp;<%= blog.created.toDateString() %></p>
         </div>
-        <br>
+        <br>  
         <div class="field">
             <p><%= blog.body %></p>
-        </div>  
+        </div> 
+        <br>
+        <div class="ui buttons">
+            <form action="/blogs/<%= blog._id %>/edit" method="GET">
+                <button class="ui right attached tiny button">Edit Post</button>
+            </form>
+            <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+                <button class="left attached ui tiny button">Delete Post</button>
+            </form>
+        </div>
     </div>
+
         
 
 <% include partials/footer %>
