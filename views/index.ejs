@@ -2,18 +2,18 @@
 
 <h1>Blog Posts</h1>
 
-<div class="ui three stackable link cards">
+<div class="card-columns-four">
     
     <% blogs.forEach(function(blog){ %>
         <!-- Link that sends you to show with the right info -->
-            <div class="fluid card">
+            <div class="ui card">
                 <a class="image rectangle" href="/blogs/<%= blog._id %>">
                     <img src="<%= blog.image %>">
                 </a>
                 <div class="content">
                     <div class="header"> <%= blog.title %> </div>
                     <div class="description">
-                        <%= blog.body.substring(0,100)%>...
+                        <%- blog.body.substring(0,100)%>...
                     </div>
                     <div class="meta">
                         <a><%= blog.created.toDateString() %></a>

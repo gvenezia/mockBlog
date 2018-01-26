@@ -1,6 +1,7 @@
 // Assign the required packages to variables
 var bodyParser      = require("body-parser"),
     express         = require("express"),   
+    expressSanitizer= require("express-sanitizer"),
     methodOverride  = require("method-override"),
     mongoose        = require("mongoose"),
     app             = express()
@@ -10,6 +11,7 @@ var bodyParser      = require("body-parser"),
 mongoose.connect("mongodb://localhost/mockBlog");
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(expressSanitizer());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method")); 
 
@@ -30,6 +32,7 @@ var Blog = mongoose.model("Blog", blogSchema);
 // });
 
 // ROUTES
+// Root route
 app.get("/", function(req, res){
    res.redirect("blogs");
 });
@@ -52,6 +55,9 @@ app.get("/blogs/new", function(req, res){
 
 // Create Route
 app.post("/blogs", function(req, res){
+    // Sanitize blog.body html
+    req.body.blog.body = req.sanitize(req.body.blog.body);
+    
    // Create blog
    Blog.create(req.body.blog, function(err, newBlog){
       if (err){
@@ -75,9 +81,12 @@ app.get("/blogs/:id", function(req, res){
 
 });
 
-// Edit Route
+// Update Route
 app.get("/blogs/:id/edit", function(req, res){
-     Blog.findById(req.params.id, function(err, foundBlog){
+     // Sanitize blog.body html
+    // req.body.blog.body = req.sanitize(req.body.blog.body);
+     
+    Blog.findById(req.params.id, function(err, foundBlog){
        if (err){
            console.log(err);
        } else {
