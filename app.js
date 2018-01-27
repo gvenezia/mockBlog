@@ -1,3 +1,5 @@
+'use strict';
+
 // Assign the required packages to variables
 var bodyParser      = require("body-parser"),
     express         = require("express"),   
