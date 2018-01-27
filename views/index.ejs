@@ -1,28 +1,31 @@
 <% include partials/header %>
 
-<h1>Blog Posts</h1>
 
-<div class="card-columns-four">
-    
-    <% blogs.forEach(function(blog){ %>
-        <!-- Link that sends you to show with the right info -->
-            <div class="ui card">
-                <a class="image rectangle" href="/blogs/<%= blog._id %>">
-                    <img src="<%= blog.image %>">
-                </a>
-                <div class="content">
-                    <div class="header"> <%= blog.title %> </div>
-                    <div class="description">
-                        <%- blog.body.substring(0,100)%>...
-                    </div>
-                    <div class="meta">
-                        <a><%= blog.created.toDateString() %></a>
+
+<div class="ui container">
+    <h1>Blog Posts</h1>
+    <div class="ui three column doubling stackable masonry grid">
+        
+        <% blogs.forEach(function(blog){ %>
+            <!-- Link that sends you to show with the right info -->
+            <div class="column">
+                <div class="ui fluid card">
+                    
+                        <img src="<%= blog.image %>">
+                    </a>
+                    <div class="content">
+                        <div class="header"> <%= blog.title %> </div>
+                        <div class="description">
+                            <%- blog.body.substring(0,100)%>...
+                        </div>
+                        <div class="meta">
+                            <a><%= blog.created.toDateString() %></a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </a>
-    <% }); %>
-
+        <% }); %>
+    </div>  
 </div>
 
 <% include partials/footer %>
