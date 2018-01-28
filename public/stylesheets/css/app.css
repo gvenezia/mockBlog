@@ -21,6 +21,12 @@ i.camera {
   margin-bottom: 1%;
 }
 
+#login:hover,
+#search-field:hover,
+#search-button:hover {
+  cursor: not-allowed;
+}
+
 
 @media screen and (max-width: 1280px) {
   /* 3 columns up to laptop and smaller desktop screens */

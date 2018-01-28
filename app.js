@@ -13,10 +13,11 @@ var bodyParser      = require("body-parser"),
 mongoose.connect("mongodb://localhost/mockBlog");
 app.set("view engine", "ejs");
 app.use(express.static("public"));
-app.use(expressSanitizer());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method")); 
 
+// Mount the sanitizer middleware below the bodyParser() instantiations and above mounting of your routes (per the docs)
+app.use(expressSanitizer());
 
 // mongoose/model config
 var blogSchema = new mongoose.Schema({
@@ -87,7 +88,7 @@ app.get("/blogs/:id", function(req, res){
 // Update Route
 app.get("/blogs/:id/edit", function(req, res){
      // Sanitize blog.body html
-    // req.body.blog.body = req.sanitize(req.body.blog.body);
+    req.body.blog.body = req.sanitize(req.body.blog.body);
      
     Blog.findById(req.params.id, function(err, foundBlog){
        if (err){
