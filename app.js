@@ -17,6 +17,7 @@ app.use(expressSanitizer());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method")); 
 
+
 // mongoose/model config
 var blogSchema = new mongoose.Schema({
     title: String,

@@ -1,17 +1,21 @@
 <% include partials/header %>
 
-
-
 <div class="ui container">
     <h1>Blog Posts</h1>
-    <div class="ui three column doubling stackable masonry grid">
-        
+    <!--Use masonry.js classes to create a masonry grid-->
+    <!--"data-masonry" initializes masonry-->
+    <div    class="grid" 
+            data-masonry='{ "itemSelector": ".grid-item", 
+                            "columnWidth": ".grid-sizer", 
+                            "percentPosition": true 
+                            }'
+    >
+        <!--Loop within the masonry grid adds each entry in the "blogs" database-->
         <% blogs.forEach(function(blog){ %>
-        
             <!-- Link that sends you to show with the right info -->
-            <div class="column">
+            <div class="grid-item grid-sizer">
                 <div class="ui fluid card">
-                    
+                    <a class="image" href="/blogs/<%= blog._id %>">
                         <img src="<%= blog.image %>">
                     </a>
                     <div class="content">
@@ -30,15 +34,3 @@
 </div>
 
 <% include partials/footer %>
-
-<!-- Use for loop and conditionals to only create one column and order correctly -->
-<%// for (let i = 0;)
-//              if (i % 3 == 0){
-                
-//             }
-//             if (i % 3 == 1){
-                
-//             }
-//             if (i % 3 == 2){
-                
-//             } %>
