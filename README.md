@@ -6,4 +6,4 @@ Users can add new posts and delete posts. Posts allow for html markup.
 
 MEAN stack w/ mongoose. Styled with Semantic UI and masonry.js
 
-![homepage-pic](https://github.com/gvenezia/mockBlog/mockBlog.png)
+![homepage-pic](https://github.com/gvenezia/mockBlog/blob/master/mockBlog.png)
