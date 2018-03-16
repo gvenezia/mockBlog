@@ -10,7 +10,8 @@ var bodyParser      = require("body-parser"),
 ;
 
 // App config
-mongoose.connect("mongodb://localhost/mockBlog");
+// mongoose.connect("mongodb://localhost/mockBlog"); // old locally hosted database
+mongoose.connect("mongodb://user1:1234@ds115569.mlab.com:15569/mock-blog");
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -29,14 +30,8 @@ var blogSchema = new mongoose.Schema({
 
 var Blog = mongoose.model("Blog", blogSchema);
 
-// Blog.create({
-//   title: "Blackout",
-//   image: "https://images.unsplash.com/photo-1499428665502-503f6c608263?auto=format&fit=crop&w=750&q=80",
-//   body: "Photo by David Werbrouck on Unsplash",
-// });
-
-// ROUTES
-// Root route
+// ============== ROUTES ==============
+// Root Route
 app.get("/", function(req, res){
    res.redirect("blogs");
 });
@@ -87,9 +82,6 @@ app.get("/blogs/:id", function(req, res){
 
 // Update Route
 app.get("/blogs/:id/edit", function(req, res){
-     // Sanitize blog.body html
-    req.body.blog.body = req.sanitize(req.body.blog.body);
-     
     Blog.findById(req.params.id, function(err, foundBlog){
        if (err){
            console.log(err);
@@ -101,7 +93,10 @@ app.get("/blogs/:id/edit", function(req, res){
 
 // Put Route
 app.put("/blogs/:id", function(req, res){
-   Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
+    // Sanitize blog.body html
+    req.body.blog.body = req.sanitize(req.body.blog.body);
+    
+    Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
        if (err){
            console.log(err)
            res.redirect("/blogs/" + req.params.id + "/edit");
