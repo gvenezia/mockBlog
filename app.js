@@ -10,7 +10,7 @@ var bodyParser      = require("body-parser"),
 ;
 
 // App config
-// mongoose.connect("mongodb://localhost/mockBlog"); // old locally hosted database
+// mongoose.connect("mongodb://localhost/mockBlog"); // old locally hosted database (contains numerous DB entries)
 mongoose.connect("mongodb://user1:1234@ds115569.mlab.com:15569/mock-blog");
 app.set("view engine", "ejs");
 app.use(express.static("public"));
