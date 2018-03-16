@@ -13,7 +13,7 @@ i.camera {
   margin: .5% 0%;
   padding: 0% .5%;
   -webkit-transition: margin .25s; /* Safari */
-    transition: margin .25s;
+  transition: margin .25s;
 }
 
 .grid-sizer:hover, .grid-item:hover {
@@ -21,13 +21,18 @@ i.camera {
   margin-bottom: 1%;
 }
 
+.card:hover {
+  box-shadow: 0px 5px 5px grey;  
+}
+
+
 #login:hover,
 #search-field:hover,
 #search-button:hover {
   cursor: not-allowed;
 }
 
-
+/* Responsive Design w/ Bootstrap breakpoints */
 @media screen and (max-width: 1280px) {
   /* 3 columns up to laptop and smaller desktop screens */
   .grid-sizer { width: 33%; }
@@ -42,4 +47,3 @@ i.camera {
   /* 1 column for smallest screens and mobile */
   .grid-sizer { width: 100%; }
 }
-

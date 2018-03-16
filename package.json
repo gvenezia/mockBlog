@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "scss": "node-sass --watch public/stylesheets/scss -o public/stylesheets/css"
+    "scss": "node-sass --watch public/stylesheets/scss -o public/stylesheets/css",
+    "start": "node app.js"
   },
   "author": "Gaetano Venezia",
   "license": "ISC",
@@ -18,7 +19,6 @@
     "method-override": "^2.3.10",
     "mongoose": "^5.0.1",
     "node-sass": "^4.7.2",
-    "semantic-ui": "^2.2.13",
-    "waterfall.js": "^1.0.2"
+    "semantic-ui": "^2.2.13"
   }
 }
