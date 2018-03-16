@@ -1,8 +1,9 @@
 {
   "name": "mock-blog",
-  "version": "5.6.0",
+  "version": "",
   "engines": {
-    "node": "6.11.2"
+    "node": "6.11.2",
+    "npm": "5.6.0"
   },
   "description": "",
   "main": "app.js",
