@@ -1,9 +1,24 @@
-# mockBlog
+# Mock Blog
 
-Mock Blog is a working framework for an image-centric blog. Images are aligned in a cascading grid layout via masonry.js. 
+Mock Blog is a responsive, functional framework for an image-led website or blog. 
 
-Users can add new posts and delete posts. Posts allow for html markup.
+Check it out [here](https://mock-blog.herokuapp.com/blogs)!
 
-MEAN stack w/ mongoose. Styled with Semantic UI and masonry.js
+## User Stories
+– Users are greeted by an attractive cascade of image cards with a title, short description, and the posted date
+– Users can click on any of image cards to see that post's page
+– Users can add, edit, and delete posts
+– Users can utilize html markup to style the descriptions of their posts (the text is then sanitized to get rid of any scripts or links)
+
+## How was it built?
+MongoDB, Express.js, Node.js (MEN stack).
+
+npm packages:"body-parser, ejs, express, express-sanitizer, masonry-layout, method-override, mongoose
+
+The "views" are written in HTML inside of .ejs files for templating.
+
+Styled with Semantic UI, masonry.js, and a bit of CSS. Semantic UI provides the responsive design. Masonry.js generates the cascading grid of images. 
+
+Deployed with Heroku. The database is hosted on mLab.
 
 ![homepage-pic](https://github.com/gvenezia/mockBlog/blob/master/mockBlog.png)
