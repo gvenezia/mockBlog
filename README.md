@@ -2,18 +2,19 @@
 
 Mock Blog is a responsive, functional framework for an image-led website or blog. 
 
-Check it out [here](https://mock-blog.herokuapp.com/blogs)!
+Check it out [here](https://mock-blog.herokuapp.com/blogs)! (Note: the site is hosted for free on Heroku so it may take a few seconds to restart after a period of inactivity)
 
 ## User Stories
 * Users are greeted by an attractive cascade of image cards with a title, short description, and the posted date
 * Users can click on any of image cards to see that post's page
 * Users can add, edit, and delete posts
+* The site is responsive to any screen size
 * Users can utilize html markup to style the descriptions of their posts (the text is then sanitized to get rid of any scripts or links)
 
 ## How was it built?
 MongoDB, Express.js, Node.js (MEN stack).
 
-npm packages:"body-parser, ejs, express, express-sanitizer, masonry-layout, method-override, mongoose
+npm packages: body-parser, ejs, express, express-sanitizer, masonry-layout, method-override, mongoose
 
 The "views" are written in HTML inside of .ejs files for templating.
 
